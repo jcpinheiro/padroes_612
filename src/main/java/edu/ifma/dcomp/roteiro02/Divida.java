@@ -6,25 +6,29 @@ import java.util.Calendar;
 
 public class Divida {
     private String credor;
-    private String cnpjCredor;
+
+    private CNPJ cnpjCredor;
 
     private double total;
-    private double valorPago;
 
-    private ArrayList<Pagamento> pagamentos = new ArrayList<>();
+    private HistoricoPagamentos historicoPagamentos = new HistoricoPagamentos();
 
-/*    public ArrayList<Pagamento> getPagamentos() {
-        return pagamentos;
-    }*/
-
-    public void registra(Pagamento pagamento) {
-        pagamentos.add(pagamento);
-        this.paga(pagamento.getValor() );
+    public HistoricoPagamentos getHistoricoPagamentos() {
+        return historicoPagamentos;
     }
 
-/*    public void setPagamentos(ArrayList<Pagamento> pagamentos) {
-        this.pagamentos = pagamentos;
-    }*/
+    public void registra(Pagamento pagamento) {
+        if ( ehValido(pagamento ) )
+            historicoPagamentos.registra(pagamento );
+        else
+            throw new IllegalArgumentException("Para quitação da dívida, faltam " + this.valorAPagar()
+                                  + ", mas foi informado um valor superior de " + pagamento.getValor() );
+
+    }
+
+    private boolean ehValido(Pagamento pagamento) {
+        return this.total >= ( historicoPagamentos.getValorPago() + pagamento.getValor() );
+    }
 
     public String getCredor() {
         return credor;
@@ -34,11 +38,11 @@ public class Divida {
         this.credor = credor;
     }
 
-    public String getCnpjCredor() {
+    public CNPJ getCnpjCredor() {
         return cnpjCredor;
     }
 
-    public void setCnpjCredor(String cnpjCredor) {
+    public void setCnpjCredor(CNPJ cnpjCredor) {
         this.cnpjCredor = cnpjCredor;
     }
 
@@ -50,56 +54,6 @@ public class Divida {
         this.total = total;
     }
 
-    public double getValorPago() {
-        return valorPago;
-    }
-
-    private void paga (double valor) {
-        if (valor <= 0) {
-            throw new IllegalArgumentException("O valor deve maior do que Zero !!");
-        }
-        this.valorPago = this.valorPago + valor;
-    }
-
-    public boolean cnpjValido() {
-        return primeiroDigitoVerificadorDoCnpj() == primeiroDigitoCorretoParaCnpj()
-                && segundoDigitoVerificadorDoCnpj() == segundoDigitoCorretoParaCnpj();
-    }
-
-    private boolean segundoDigitoCorretoParaCnpj() {
-        return true;
-    }
-
-    private boolean segundoDigitoVerificadorDoCnpj() {
-        return true;
-    }
-
-    private boolean primeiroDigitoCorretoParaCnpj() {
-        return true;
-    }
-
-    private boolean primeiroDigitoVerificadorDoCnpj() {
-        return true;
-    }
-
-    public ArrayList<Pagamento> pagamentosAntesDe(LocalDate data) {
-        ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
-        for (Pagamento pagamento : this.pagamentos) {
-            if (pagamento.getDataPagamento().isBefore(data ) ) {
-                pagamentosFiltrados.add(pagamento);
-            }
-        }
-        return pagamentosFiltrados;
-    }
-    public ArrayList<Pagamento> pagamentosComValorMaiorQue(double valorMinimo) {
-        ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
-        for (Pagamento pagamento : this.pagamentos) {
-            if (pagamento.getValor() > valorMinimo) {
-                pagamentosFiltrados.add(pagamento);
-            }
-        }
-        return pagamentosFiltrados;
-    }
 
 
     @Override
@@ -108,7 +62,15 @@ public class Divida {
                 "credor='" + credor + '\'' +
                 ", cnpjCredor='" + cnpjCredor + '\'' +
                 ", total=" + total +
-                ", valorPago=" + valorPago +
+                ", valorPago=" + historicoPagamentos.getValorPago() +
                 '}';
+    }
+
+    public double valorAPagar() {
+        return total - historicoPagamentos.getValorPago();
+    }
+
+    public double getValorPago() {
+        return historicoPagamentos.getValorPago();
     }
 }
