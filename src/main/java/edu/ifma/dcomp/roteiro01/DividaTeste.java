@@ -9,7 +9,7 @@ public class DividaTeste {
         divida.setCnpjCredor("00.000.000/6789-02");
         divida.setTotal(5000.0);
 
-        divida.setValorPago(3000.00);
+        //divida.setValorPago(3000.00);
 
         System.out.println(divida );
 
