@@ -1,4 +1,4 @@
-package edu.ifma.dcomp.roteiro03;
+package edu.ifma.dcomp.roteiro04;
 
 import java.time.LocalDate;
 
@@ -17,8 +17,8 @@ public class HistoricoPagamentosTeste {
         pagamento2.setValor(300 );
 
         HistoricoPagamentos historicoPagamentos = new HistoricoPagamentos();
-/*
-        historicoPagamentos.add(pagamento1 );
+
+   /*     historicoPagamentos.add(pagamento1 );
         historicoPagamentos.registra(pagamento2 );
 
         boolean temPagamento = historicoPagamentos.contains(pagamento1);
