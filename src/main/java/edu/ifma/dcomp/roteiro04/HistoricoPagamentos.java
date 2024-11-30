@@ -9,7 +9,7 @@ class HistoricoPagamentos  {
 
     private double valorPago;
 
-    private List<Pagamento> pagamentos = new LinkedList<>();
+    private List<Pagamento> pagamentos = new ArrayList<>();
 
     public void registra(Pagamento pagamento) {
         pagamentos.add(pagamento);

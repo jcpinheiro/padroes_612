@@ -1,5 +1,6 @@
 package edu.ifma.dcomp.roteiro04;
 
+import java.util.Collection;
 import java.util.List;
 
 public class Divida {
@@ -10,10 +11,6 @@ public class Divida {
     private double total;
 
     private HistoricoPagamentos historicoPagamentos = new HistoricoPagamentos();
-
-    public HistoricoPagamentos getHistoricoPagamentos() {
-        return historicoPagamentos;
-    }
 
     public void registra(Pagamento pagamento) {
         if ( ehValido(pagamento ) )

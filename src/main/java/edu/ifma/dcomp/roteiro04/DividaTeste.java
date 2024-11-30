@@ -1,13 +1,12 @@
 package edu.ifma.dcomp.roteiro04;
 
-import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.util.Locale;
+import java.util.Collection;
+import java.util.List;
 
-public class RelatorioDeDividasTeste {
+public class DividaTeste {
 
     public static void main(String[] args) {
-
 
         Pagamento pagamento1 = new Pagamento();
         pagamento1.setDataPagamento(LocalDate.now() );
@@ -27,9 +26,12 @@ public class RelatorioDeDividasTeste {
         divida.registra(pagamento1);
         divida.registra(pagamento2);
 
-        RelatorioDeDivida relatorioDeDivida = new RelatorioDeDivida(divida);
-        relatorioDeDivida.geraRelatorio(NumberFormat
-                                        .getCurrencyInstance(new Locale("pt", "BR")));
+        Iterable<Pagamento> pagamentos = divida.getPagamentos();
+
+        pagamentos.forEach(pagamento -> System.out.println(pagamento) );
+        // pagamentos.remove(pagamento1 );
+        System.out.println("----------------------");
+        pagamentos.forEach(pagamento -> System.out.println(pagamento) );
 
 
     }
