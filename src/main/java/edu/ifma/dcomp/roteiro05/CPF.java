@@ -1,6 +1,8 @@
 package edu.ifma.dcomp.roteiro05;
 
-public class CPF {
+import java.util.Objects;
+
+public class CPF implements Documento {
 
     private String valor;
 
@@ -10,12 +12,26 @@ public class CPF {
         else
             throw new IllegalArgumentException("O CPF é inválido!" );
     }
-
-    public String getValor() {
+    @Override
+    public String getNumero() {
         return valor;
     }
 
+    @Override
     public boolean ehValido(String valor) {
         return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CPF cpf = (CPF) o;
+        return Objects.equals(valor, cpf.valor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(valor);
     }
 }

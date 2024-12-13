@@ -1,6 +1,8 @@
 package edu.ifma.dcomp.roteiro05;
 
-public class CNPJ {
+import java.util.Objects;
+
+public class CNPJ implements Documento {
 
     private String valor;
 
@@ -11,9 +13,28 @@ public class CNPJ {
             throw new IllegalArgumentException("O CNPJ é inválido!" );
     }
 
+    @Override
     public boolean ehValido(String valor) {
         return primeiroDigitoVerificador() == primeiroDigitoCorreto()
                 && segundoDigitoVerificador() == segundoDigitoCorreto();
+    }
+
+    @Override
+    public String getNumero() {
+        return this.valor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CNPJ cnpj = (CNPJ) o;
+        return Objects.equals(valor, cnpj.valor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(valor);
     }
 
     private boolean segundoDigitoCorreto() {

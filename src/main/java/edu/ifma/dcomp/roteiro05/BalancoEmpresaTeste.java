@@ -9,7 +9,7 @@ public class BalancoEmpresaTeste {
 
         Divida divida1 = new Divida();
         divida1.setCredor("Banco XPTO");
-        divida1.setCnpjCredor(new CNPJ("26.462.376/0001-01" ) );
+        divida1.setDocumentoCredor(new CNPJ("26.462.376/0001-01" ) );
         divida1.setTotal(1000);
 
         balancoEmpresa.registraDivida(divida1 );

@@ -3,8 +3,7 @@ package edu.ifma.dcomp.roteiro05;
 public class Divida {
     private String credor;
 
-    private CNPJ cnpjCredor;
-    private CPF cpfCredor;
+    private Documento documentoCredor;
 
     private double total;
 
@@ -34,26 +33,12 @@ public class Divida {
         this.credor = credor;
     }
 
-    public CNPJ getCnpjCredor() {
-        return cnpjCredor;
+    public Documento getDocumentoCredor() {
+        return documentoCredor;
     }
 
-    public void setCnpjCredor(CNPJ cnpjCredor) {
-        if (cpfCredor == null )
-            this.cnpjCredor = cnpjCredor;
-        else
-            throw new IllegalArgumentException("Essa dívdia já foi associada a um CPF!" );
-    }
-
-    public CPF getCpfCredor() {
-        return cpfCredor;
-    }
-
-    public void setCpfCredor(CPF cpfCredor) {
-        if( cnpjCredor == null )
-           this.cpfCredor = cpfCredor;
-        else
-            throw new IllegalArgumentException("Essa dívida já foi associada a um CNPJ" );
+    public void setDocumentoCredor(Documento documentoCredor) {
+        this.documentoCredor = documentoCredor;
     }
 
     public double getTotal() {
@@ -68,7 +53,7 @@ public class Divida {
     public String toString() {
         return "Divida{" +
                 "credor='" + credor + '\'' +
-                ", cnpjCredor='" + cnpjCredor + '\'' +
+                ", documento='" + documentoCredor + '\'' +
                 ", total=" + total +
                 ", valorPago=" + historicoPagamentos.getValorPago() +
                 '}';

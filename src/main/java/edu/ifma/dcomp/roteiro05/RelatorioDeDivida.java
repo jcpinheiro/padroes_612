@@ -12,7 +12,7 @@ public class RelatorioDeDivida {
 
     public void geraRelatorio(NumberFormat formatadorDeNumero) {
      System.out.println("Credor: " + divida.getCredor());
-     System.out.println("Cnpj credor: " + divida.getCnpjCredor());
+     System.out.println("Cnpj credor: " + divida.getDocumentoCredor());
  
     // NumberFormat formatadorDeNumero = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
     // NumberFormat formatadorDeNumero = NumberFormat.getCurrencyInstance(Locale.UK );

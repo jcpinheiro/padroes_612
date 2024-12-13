@@ -22,7 +22,7 @@ public class RelatorioDeDividasTeste {
         Divida divida = new Divida();
         divida.setTotal(1000 );
         divida.setCredor("Banco XPTO" );
-        divida.setCnpjCredor(new CNPJ("123.567/0001-23") );
+        divida.setDocumentoCredor(new CNPJ("123.567/0001-23") );
 
         divida.registra(pagamento1);
         divida.registra(pagamento2);
