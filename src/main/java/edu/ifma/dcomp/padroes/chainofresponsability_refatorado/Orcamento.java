@@ -1,4 +1,4 @@
-package edu.ifma.dcomp.padroes.chainofresponsability;
+package edu.ifma.dcomp.padroes.chainofresponsability_refatorado;
 
 import java.util.ArrayList;
 import java.util.List;
