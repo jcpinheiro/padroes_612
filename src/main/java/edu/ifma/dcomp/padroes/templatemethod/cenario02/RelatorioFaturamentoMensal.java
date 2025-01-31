@@ -1,5 +1,7 @@
 package edu.ifma.dcomp.padroes.templatemethod.cenario02;
 
+import java.time.LocalDate;
+
 public abstract class RelatorioFaturamentoMensal {
 
     private void carregarDadosFaturamento() {

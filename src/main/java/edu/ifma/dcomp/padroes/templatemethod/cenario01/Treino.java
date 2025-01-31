@@ -10,8 +10,8 @@ public abstract class Treino {
 		treinoTatico();
 	}
 
-	abstract void preparoFisico();
-	abstract void jogoTreino();
+	protected abstract void preparoFisico();
+	protected abstract void jogoTreino();
 
 	final void treinoTatico() {
 		System.out.println("Treino Tatico");

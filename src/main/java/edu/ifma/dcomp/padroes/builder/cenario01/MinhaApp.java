@@ -11,8 +11,8 @@ public class MinhaApp {
 		SanduicheBuilder b2 = new FishBuilder();
 
 		// Diretor delega ao builder escolhido para construção do produto
-		cozinha.fazSanduiche(b1);
-		b1.getSanduiche();
+		cozinha.fazSanduiche(b2);
+		b2.getSanduiche();
 	}
 
 }

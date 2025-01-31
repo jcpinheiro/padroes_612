@@ -12,14 +12,16 @@ public class TesteTreino {
 
         Treino treinoMeioTemporada = new TreinoNoMeioDaTemporada();
         treinoMeioTemporada.treinoDiario();
+        System.out.println("-----------------------");
+
+        LocalDate dataProva = LocalDate
+                .now()
+                .plusMonths(3)
+                .plusDays(5);
+
+        System.out.println(dataProva );
 
 
-        LocalDate dataConsulta =
-                LocalDate.now()
-                 .plusMonths(3)
-                 .plusDays(5);
-
-        System.out.println(dataConsulta );
 
     }
 }
